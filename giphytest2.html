@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+    <title>Tester</title>
+</head>
+<h1>Open Console Log</h1>
+<div id="gifs-appear-here">
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+
+    var api = "jPos9RSs2YFAD8HQVQCBt782M5HUNlT6";
+    var search = "michael keaton"
+    var limit = 35
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search + "&api_key=jPos9RSs2YFAD8HQVQCBt782M5HUNlT6&limit=" + limit;
+    console.log(queryURL)
+    var shuffleNumber = 0
+
+    //SHUFFLE FUNCTION
+    function shuffle(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+    }
+    //end of function
+
+
+    //AJAX call
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
+        var results = response.data
+        console.log(results)
+        var i2 = 0
+        
+        //creates a random number array the length of the limit to randomize the gif output
+        var shuffleNumber = [];
+        for (var n = 0; n < limit; n++) {
+            shuffleNumber.push(n);
+        }
+        shuffle(shuffleNumber);
+        console.log(shuffleNumber);
+        
+        //runs loop here
+        for (var i = 0; i2 < 4; i++) {
+
+            // if we can't find 4 images that meet the criteria loop ends
+            if (i > limit) {
+                i2 = 4
+            }
+            // looks for all gifs that are not rated r
+            else if (results[shuffleNumber[i]].rating !== "r") {
+
+                // looks for gifs that are 200px in height and less then 351px in width
+                if (results[shuffleNumber[i]].images.fixed_height.width < 351) {
+                    var gifDiv = $("<div>").css("float", "left");
+                    var personImage = $("<img>");
+                    personImage.attr("src", results[shuffleNumber[i]].images.fixed_height.url);
+                    gifDiv.append(personImage);
+                    $("#gifs-appear-here").prepend(gifDiv);
+                    i2++
+                }
+            }
+        }
+    });
+
+
+    console.log("hello")
+
+
+
+
+
+</script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+</body>
+
+</html>
