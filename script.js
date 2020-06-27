@@ -19,24 +19,26 @@ function omdb(title){
         //title
         $("#title").text(response.Title);
         //running time
-        $("#time").text("<b>Running time:</b> "+response.Runtime);
+        $("#time").html("<b>Running time:</b> "+response.Runtime);
         //Plot
         $("#plot").text("Plot");
 $("#plot").html("<p>"+response.Plot+"</p>");
 //director and cast
 $("#directorANDcast").html("<p><b>Director:</b> "+response.Director+"<br><b>Starring:</b> "+response.Actors+"</p>");
-    //ratings
+//poster
+$("#poster").attr("src",response.Poster);    
+//ratings
     var tomDiv =$("<div>");
     var tomatoIcon =$("<img>");
-    tomatoIcon.attr("src","tomato.png");
+    tomatoIcon.attr("src","css/tomato.png");
     tomatoIcon.attr("style","width:100px");
     var imdbDiv =$("<div>");
     var imdbIcon = $("<img>");
-    imdbIcon.attr("src","imdb.png");
+    imdbIcon.attr("src","css/imdb.png");
     imdbIcon.attr("style","width:100px");
     var metaDiv=$("<div>");
     var metaCIcon=$("<img>");
-    metaCIcon.attr("src","meta.png");
+    metaCIcon.attr("src","css/meta.png");
     metaCIcon.attr("style","width:100px");
     
     tomDiv.html("<p>"+response.Ratings[1].Value+"</p>");
