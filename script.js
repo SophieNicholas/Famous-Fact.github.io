@@ -3,7 +3,7 @@ function omdb(title){
     //building url to query database
     omdbURL = "https://www.omdbapi.com/?t=" + title + "&y=&plot=short&apikey=trilogy";
     
-    //run AJAX call to the OpenWeatherMap API
+    //run AJAX call to the omdb API
     $.ajax({
       url: omdbURL,
       method: "GET"
@@ -28,31 +28,26 @@ $("#directorANDcast").html("<p><b>Director:</b> "+response.Director+"<br><b>Star
 //poster
 $("#poster").attr("src",response.Poster);    
 //ratings
-    var tomDiv =$("<div>");
+    var ratingsDiv =$("#ratings");
+    var tomatoDiv =$("<td>");
     var tomatoIcon =$("<img>");
     tomatoIcon.attr("src","css/tomato.png");
     tomatoIcon.attr("style","width:100px");
-    var imdbDiv =$("<div>");
+    var imdbDiv =$("<td>");
     var imdbIcon = $("<img>");
     imdbIcon.attr("src","css/imdb.png");
     imdbIcon.attr("style","width:100px");
-    var metaDiv=$("<div>");
+    var metaDiv=$("<td>");
     var metaCIcon=$("<img>");
     metaCIcon.attr("src","css/meta.png");
     metaCIcon.attr("style","width:100px");
     
-    tomDiv.html("<p>"+response.Ratings[1].Value+"</p>");
-    tomDiv.prepend(tomatoIcon);
-    $("#ratings").append(tomDiv);    
+    ratingsDiv.html("<td>"+response.Ratings[1].Value+"</td><td>"+ response.Ratings[0].Value+"</td><td>"+response.Ratings[2].Value+"</td>");
+    tomatoDiv.append(tomatoIcon);
+    imdbDiv.append(imdbIcon);
+    metaDiv.append(metaCIcon);
+    $("#icons").prepend(tomatoDiv,imdbDiv,metaDiv);    
     
-    imdbDiv.html("<p>"+response.Ratings[0].Value+"</p>");
-    imdbDiv.prepend(imdbIcon);
-    $("#ratings").append(imdbDiv);
-    
-    metaDiv.html("<p>"+response.Ratings[2].Value+"</p>");
-    metaDiv.prepend(metaCIcon);
-    $("#ratings").append(metaDiv);
-      
     });
     }
     omdb("home");
