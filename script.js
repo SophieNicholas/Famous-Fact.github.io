@@ -129,7 +129,9 @@ function omdb(title) {
       // Log the resulting object
       console.log(response);
       //title
-      $(".title").text(response.Title);
+
+      $("#title").text(response.Title);
+
       //running time
       $("#time").html("<b>Running time:</b> " + response.Runtime);
       //Plot

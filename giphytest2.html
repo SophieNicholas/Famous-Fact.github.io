@@ -8,19 +8,59 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
     <title>Tester</title>
+    <link rel="stylesheet" href="css/skeleton.css">
+    <style>
+        .three {
+            text-align: center;
+            border-style: solid;
+            border-color: black;
+            border-width: 1px;
+            border-top: none;
+            height: 220px;
+            padding-top:10px;
+            padding-bottom: 10px;
+        }
+
+        .three.columns {
+            width: 24%;
+        }
+
+        .columns {
+            margin-left: 1%;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
-<h1>Open Console Log</h1>
+<!-- In order to align 4 pics on the screen I had to make the css changes above -->
+<div class="container">
+    <div class="row">
+        <div class="three columns gif1"></div>
+        <div class="three columns gif2"></div>
+        <div class="three columns gif3"></div>
+        <div class="three columns gif4"></div>
+    </div>
+</div>
 <div id="gifs-appear-here">
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 
     var api = "jPos9RSs2YFAD8HQVQCBt782M5HUNlT6";
-    var search = "michael keaton"
-    var limit = 35
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search + "&api_key=jPos9RSs2YFAD8HQVQCBt782M5HUNlT6&limit=" + limit;
+    var search = "star wars"
+    var gifLimit = 350
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search + "&api_key=jPos9RSs2YFAD8HQVQCBt782M5HUNlT6&limit=" + gifLimit;
     console.log(queryURL)
-    var shuffleNumber = 0
+    var shuffleNumber = 0;
+    var gifClasses = [".gif1", ".gif2", ".gif3", ".gif4"];
+
 
     //SHUFFLE FUNCTION
     function shuffle(array) {
@@ -53,32 +93,33 @@
         var results = response.data
         console.log(results)
         var i2 = 0
-        
+
         //creates a random number array the length of the limit to randomize the gif output
         var shuffleNumber = [];
-        for (var n = 0; n < limit; n++) {
+        for (var n = 0; n < gifLimit; n++) {
             shuffleNumber.push(n);
         }
         shuffle(shuffleNumber);
         console.log(shuffleNumber);
-        
+
         //runs loop here
         for (var i = 0; i2 < 4; i++) {
 
             // if we can't find 4 images that meet the criteria loop ends
-            if (i > limit) {
+            if (i > gifLimit) {
                 i2 = 4
             }
             // looks for all gifs that are not rated r
-            else if (results[shuffleNumber[i]].rating !== "r") {
+            else if (results[shuffleNumber[i]].rating !== "r" && results[shuffleNumber[i]].rating !== "pg-13") {
 
                 // looks for gifs that are 200px in height and less then 351px in width
-                if (results[shuffleNumber[i]].images.fixed_height.width < 351) {
-                    var gifDiv = $("<div>").css("float", "left");
-                    var personImage = $("<img>");
-                    personImage.attr("src", results[shuffleNumber[i]].images.fixed_height.url);
-                    gifDiv.append(personImage);
-                    $("#gifs-appear-here").prepend(gifDiv);
+                if (results[shuffleNumber[i]].images.fixed_height.width < 281) {
+                    var gifDiv = $("<div>").css("float", "none");
+                    var gifOutput = $("<img>");
+                    gifOutput.attr({ "src": results[shuffleNumber[i]].images.fixed_height.url, "alt": results[shuffleNumber[i]].title });
+                    gifDiv.append(gifOutput);
+                    var gifNumber = gifClasses[i2];
+                    $(gifNumber).append(gifDiv);
                     i2++
                 }
             }

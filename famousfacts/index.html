@@ -5,9 +5,7 @@
 
   <!-- Basic Page Needs -->
   <meta charset="utf-8">
-
-               <title>Famous-Facts</title>
-
+  <title>Famous-Facts</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -15,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- FONT including google fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat|Shrikhand" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
@@ -23,51 +21,12 @@
   <!-- CSS: skeleton, normalize and css -->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css.css">
 
-  <link rel="stylesheet" href="css/style.css">
-
- <style>
-    .columns {
-      margin-left: 1%;
-    }
-
-    .container {
-      position: relative;
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      box-sizing: border-box;
-    }
-
-    .threegifs {
-      text-align: center;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      margin-top: 10px;
-    }
-
-    .fourgifs.columns {
-      width: 24%;
-    }
-
-    .fourgifs {
-      text-align: center;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      margin-top: 10px;
-    }
-
-    .threegifs.columns {
-      width: 32%;
-      text-align: center;
-    }
-  </style>
-   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+ 
 </head>
 
 <!-- This is the html for the very first page  -->
-
 <body>
   <div id="title" class="container one">
 
@@ -89,7 +48,7 @@
 
 
   <!-- The output page after pressing the search button  -->
-  <div class="container two">
+  <div id="title" class="container two">
     <p id="second-welcome"> Welcome to Actors Addicts </p>
     <form>
       <!-- the second search bar, this is only for show it will not be needed in the final as we will only append the class so swe dont loose the functions of the search bar  -->
@@ -98,53 +57,51 @@
     </form>
     <div class="row">
       <div class="twelve columns">
-        <h2 class="title"></h2>
-          <h5>Plot</h5>
-        <i id="plot"></i>
+        <p id=famous> "THIS IS A PLACEHOLDER FOR: Famous Person" </p>
+        <i id=quote> THIS IS A PLACEHOLDER FOR: a quote. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Praesentium laboriosam quos
+          necessitatibus enim temporibus illo consectetur ullam numquam inventore ut voluptatem quam et velit
+          voluptates deleniti delectus quia corporis, distinctio laborum eos expedita? Nam quisquam sint soluta quae
+          ex distinctio?</i>
       </div>
     </div>
 
     <!-- picture of actor and ifnormatin on them -->
     <div class="row" id="pic-info">
-      <div id="img-place" class="two columns">
-        <img id="poster">
+      <div id=img-place class="four columns">
+        <p id="img-placeholer-text"> IMG </p>
+        <img> </img>
       </div>
       <div id="info-area" class="seven columns">
-        <p id="directorANDcast"></p>
-        <table>
-          <tr id="icons">
-
-          </tr>
-          <tr id="ratings">
-
-          </tr>
-        </table>
+        <p> "actors name" Best known for: </p>
+        <p> </p>
       </div>
     </div>
 
     <!-- Gifs layout -->
     <div class="row" id="gifs">
-      <div class="three columns gif1 fourgifs"></div>
-      <div class="three columns gif2 fourgifs"></div>
-      <div class="three columns gif3 fourgifs"></div>
-      <div class="three columns gif4 fourgifs"></div>
-   
+      <div id="gif-place1" class="three columns">
+        <p id="img-placeholer-text"> GIF </p>
+        <img> </img>
+      </div>
+      <div id="gif-place2" class="three columns">
+        <p id="img-placeholer-text"> GIF </p>
+        <img> </img>
+      </div>
+      <div id="gif-place3" class="three columns">
+        <p id="img-placeholer-text"> GIF </p>
+        <img> </img>
+      </div>
+      <div id="gif-place4" class="three columns">
+        <p id="img-placeholer-text"> Gif </p>
+        <img> </img>
+      </div>
 
     </div>
-    <div class="row">
 
-      <div class="four columns gif5 threegifs"></div>
-      <div class="four columns gif6 threegifs"></div>
-      <div class="four columns gif7 threegifs"></div>
-    </div>
-  </div>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-  <script src="script.js"></script>
-
-
+  <script src="myscripts.js"></script>
 
 </body>
 
