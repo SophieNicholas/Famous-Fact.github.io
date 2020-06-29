@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-  <title>Your page title here :)</title>
+  <title>Best Site Ever</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -21,45 +22,91 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+  <style>
+    .columns {
+      margin-left: 1%;
+    }
 
-  <!-- Favicon
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="icon" type="image/png" href="images/favicon.png">
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
 
-</head>
+    .threegifs {
+      text-align: center;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-top: 10px;
+    }
+
+    .fourgifs.columns {
+      width: 24%;
+    }
+
+    .fourgifs {
+      text-align: center;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-top: 10px;
+    }
+
+    .threegifs.columns {
+      width: 32%;
+      text-align: center;
+    }
+  </style>
+
+
 <body>
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container">
     <div class="row">
-        <div class="two columns">
+      <div class="two columns">
 
-        </div>
-        <div class="six columns">
-            <h2 id="title"></h2>
-            <p id="time"></p>
-            <h3>Plot</h3>
-            <p id="plot"></p>
-            <p id="directorANDcast"></p>
-            <table >
-              <tr id="icons">
+      </div>
+      <div class="six columns">
+        <h2 id="title"></h2>
+        <p id="time"></p>
+        <h3>Plot</h3>
+        <p id="plot"></p>
+        <p id="directorANDcast"></p>
+        <table>
+          <tr id="icons">
 
-              </tr>
-              <tr id="ratings">
+          </tr>
+          <tr id="ratings">
 
-              </tr>
-            </table>
-        </div>
-        <div class="two columns">
-          <img id="poster">
-        </div>
+          </tr>
+        </table>
+      </div>
+      <div class="two columns">
+        <img id="poster">
+      </div>
     </div>
-</div>
+    <div class="row">
+      <div class="three columns gif1 fourgifs"></div>
+      <div class="three columns gif2 fourgifs"></div>
+      <div class="three columns gif3 fourgifs"></div>
+      <div class="three columns gif4 fourgifs"></div>
+    </div>
+    <div class="row">
+      <div class="four columns gif5 threegifs"></div>
+      <div class="four columns gif6 threegifs"></div>
+      <div class="four columns gif7 threegifs"></div>
+    </div>
+  </div>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="script.js"></script>
-<!-- End Document
+  <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
+
 </html>
