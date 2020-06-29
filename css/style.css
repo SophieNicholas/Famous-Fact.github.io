@@ -1,0 +1,127 @@
+/* website title and search*/
+#website {
+    color: white;
+    font-size: 70px;
+    padding-top: 20%;
+    font-family: 'Shrikhand', sans-serif;
+    display: block;
+    text-shadow: 4px 4px red;
+    letter-spacing: 2px;
+    }
+    
+    .container.one { 
+        background: white url(https://media1.tenor.com/images/54451401d52c0dd2fe9ee5752857d53c/tenor.gif?itemid=3579864); 
+        height: 1000px;
+        width: 100%; 
+        }
+    
+    #searchTerm {
+        height: 40px;
+        width: 700px;
+        border-radius: 15px;
+    }
+    
+    #searchTerm.placeholder {
+        align-self: center;
+    }
+    
+    #searchButton {
+        height: 50px;
+        background-color: red;
+        color: lightgray;
+    
+    }
+    
+    #search { 
+        font-size: 20px;
+        color: white;
+    }
+    
+    
+    /* The styling for the  output page */
+    
+    .container.two {
+        background-color: darkgray;
+        border-radius: 15px;
+        margin-top: 40px;
+        padding: 60px;
+        margin-bottom: 40px;
+    }
+    
+    
+    #second-welcome {
+        color: white;
+        font-size: 50px;
+        padding-top: 10px;
+        font-family: 'Shrikhand', sans-serif;
+        display: block;
+        text-shadow: 4px 4px red;
+        letter-spacing: 2px;
+        }
+    
+    
+    #title { 
+        text-align: center;
+        background-color: lightgray;
+    }
+    
+    /* We can just add this class to the orginal search bar once the search bar has been pressed so that we do not loose the search bars functions  */
+    .updated-search-bar { 
+    width: 500px;
+        height: 30px;
+        border-radius: 15px;}
+
+
+    
+    #famous {
+        font-family: 'Bungee', cursive;
+        font-size: 30px;
+    
+    }
+    
+    #img-place {
+        margin:0px;
+    background-color: maroon;
+    height: 300px;
+    width: 300px;
+    text-align: center;
+    }
+    
+    #img-placeholer-text {
+        margin-top: 50%;
+    }
+    
+    #info-area {
+        text-align: justify;
+    }
+    
+    #pic-info {
+        margin-top: 40px;
+    }
+    
+    
+    #gif-place1 {
+        background-color: red;
+        margin-top: 20px;
+    
+    }
+    
+    
+    #gif-place2 {
+        background-color: grey;
+        margin-top: 20px;
+    
+    }
+    
+    
+    #gif-place3 {
+        background-color: black;
+        margin-top: 20px;
+    
+    }
+    
+    #gif-place4 {
+        background-color: darkgrey;
+        margin-top: 20px;
+    
+    }
