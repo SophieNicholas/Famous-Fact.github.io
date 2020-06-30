@@ -125,3 +125,13 @@
         margin-top: 20px;
     
     }
+
+    .lastFive {
+        text-align: center;
+        font-size: large ;
+    }
+
+    .listed:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
