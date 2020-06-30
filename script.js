@@ -2,11 +2,15 @@
 var filmSearch = "harry potter"
 //Global Variables for GIPHY
 var gifLimit = 700
-var gifQueryURL = "https://api.giphy.com/v1/gifs/search?q=" + filmSearch + "&api_key=jPos9RSs2YFAD8HQVQCBt782M5HUNlT6&limit=" + gifLimit;
-console.log(gifQueryURL)
 var gifShuffleNumber = 0;
 var gifClasses = [".gif1", ".gif2", ".gif3", ".gif4"];
-var gifClasses2 = [".gif5", ".gif6", ".gif7"];
+var savedSearch= [];
+
+function capitalize_Words(str)
+{
+ return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
+console.log(capitalize_Words('js string exercises'));
 
 //SHUFFLE FUNCTION
 function shuffle(array) {
@@ -30,57 +34,67 @@ function shuffle(array) {
 //end of function
 
 //GIPHY Ajax search
-$.ajax({
-  url: gifQueryURL,
-  method: "GET"
-}).then(function (response2) {
-  console.log(response2);
-  var gifresults = response2.data
-  console.log(gifresults)
-  var i2 = 0
+$("#searchButton").on("click", function () {
+  event.preventDefault();
+  filmSearch = $("#searchTerm").val();
+  savedSearch.push(filmSearch);
+  var listItem = $("<li>");
+  listItem.text(filmSearch);
+  $(".searches").prepend(filmSearch);
+  localStorage.setItem("Searches", JSON.stringify(savedSearch));
+  var gifQueryURL = "https://api.giphy.com/v1/gifs/search?q=" + filmSearch + "&api_key=jPos9RSs2YFAD8HQVQCBt782M5HUNlT6&limit=" + gifLimit;
+  console.log("hello");
+  $.ajax({
+    url: gifQueryURL,
+    method: "GET"
+  }).then(function (response2) {
+    console.log(response2);
+    var gifresults = response2.data
+    console.log(gifresults)
+    var i2 = 0
 
-  //creates a random number array the length of the limit to randomize the gif output
-  var gifShuffleNumber = [];
-  for (var n = 0; n < gifresults.length; n++) {
-    gifShuffleNumber.push(n);
-  }
-  shuffle(gifShuffleNumber);
-  console.log(gifShuffleNumber);
-  var i2 = 0
-  var i3 = 0
+    //creates a random number array the length of the limit to randomize the gif output
+    var gifShuffleNumber = [];
+    for (var n = 0; n < gifresults.length; n++) {
+      gifShuffleNumber.push(n);
+    }
+    shuffle(gifShuffleNumber);
+    console.log(gifShuffleNumber);
+    var i2 = 0
+    var i3 = 0
 
-  //runs loop here
-  for (var i = 0; i < gifresults.length; i++) {
+    //runs loop here
+    for (var i = 0; i < gifresults.length; i++) {
 
-    // looks for all gifs that are not rated r
-    if (gifresults[gifShuffleNumber[i]].rating !== "r") {
-      if (gifresults[gifShuffleNumber[i]].title.indexOf("film") >= 0 | gifresults[gifShuffleNumber[i]].slug.indexOf("film") >= 0 | gifresults[gifShuffleNumber[i]].title.indexOf("movie") >= 0 | gifresults[gifShuffleNumber[i]].slug.indexOf("movie") >= 0) {
-        console.log(gifresults[1].rating)
-        // looks for gifs that are 200px in height and less then 351px in width
-        if (gifresults[gifShuffleNumber[i]].images.fixed_height.width < 281) {
-          var gifDiv = $("<div>").css("float", "none");
-          var gifOutput = $("<img>");
-          gifOutput.attr({ "src": gifresults[gifShuffleNumber[i]].images.fixed_height.url, "alt": gifresults[gifShuffleNumber[i]].title });
-          gifDiv.append(gifOutput);
-          var gifNumber = gifClasses[i2];
-          $(gifNumber).append(gifDiv);
-          i2++;
-          if (i2 == 4) {
-            i = gifLimit;
-            i3 = 1
+      // looks for all gifs that are not rated r
+      if (gifresults[gifShuffleNumber[i]].rating !== "r") {
+        if (gifresults[gifShuffleNumber[i]].title.indexOf("film") >= 0 | gifresults[gifShuffleNumber[i]].slug.indexOf("film") >= 0 | gifresults[gifShuffleNumber[i]].title.indexOf("movie") >= 0 | gifresults[gifShuffleNumber[i]].slug.indexOf("movie") >= 0) {
+          console.log(gifresults[1].rating)
+          // looks for gifs that are 200px in height and less then 351px in width
+          if (gifresults[gifShuffleNumber[i]].images.fixed_height.width < 281) {
+            var gifDiv = $("<div>").css("float", "none");
+            var gifOutput = $("<img>");
+            gifOutput.attr({ "src": gifresults[gifShuffleNumber[i]].images.fixed_height.url, "alt": gifresults[gifShuffleNumber[i]].title });
+            gifDiv.append(gifOutput);
+            var gifNumber = gifClasses[i2];
+            $(gifNumber).append(gifDiv);
+            i2++;
+            if (i2 == 4) {
+              i = gifLimit;
+              i3 = 1
+            }
           }
+          console.log(i2)
+          console.log(i)
         }
-        console.log(i2)
-        console.log(i)
       }
     }
-  }
-  //if function can't find 4 pics it searches for 3 larger ones
-  if (i3 == 0) {
-    $(".gif1").empty();
-    $(".gif2").empty();
-    $(".gif3").empty();
-    var i2 = 0
+    //if function can't find 4 pics it searches for 3 larger ones
+    if (i3 == 0) {
+      $(".gif1").empty();
+      $(".gif2").empty();
+      $(".gif3").empty();
+      var i2 = 0
       for (var i = 0; i < gifresults.length; i++) {
         // looks for all gifs that are not rated r
         if (gifresults[gifShuffleNumber[i]].rating !== "r") {
@@ -105,63 +119,117 @@ $.ajax({
           }
         }
       }
+    }
+  });
+
+  //End GIPHY Ajax search
+
+  //omdb api
+  function omdb(title) {
+    //building url to query database
+    omdbURL = "https://www.omdbapi.com/?t=" + title + "&y=&plot=short&apikey=trilogy";
+
+    //run AJAX call to the omdb API
+    $.ajax({
+      url: omdbURL,
+      method: "GET"
+    })
+      // We store all of the retrieved data inside of an object called "response"
+      .then(function (response) {
+
+        // Log the queryURL
+        console.log(omdbURL);
+
+        // Log the resulting object
+        console.log(response);
+        //title
+
+        $("#title").text(response.Title);
+
+        //running time
+        $("#time").html("<b>Running time:</b> " + response.Runtime);
+        //Plot
+        $("#plot").text("Plot");
+        $("#plot").html("<p>" + response.Plot + "</p>");
+        //director and cast
+        $("#directorANDcast").html("<p><b>Director:</b> " + response.Director + "<br><b>Starring:</b> " + response.Actors + "</p>");
+        //poster
+        $("#poster").attr("src", response.Poster);
+        //ratings
+        var ratingsDiv = $("#ratings");
+        var tomatoDiv = $("<td>");
+        var tomatoIcon = $("<img>");
+        tomatoIcon.attr("src", "css/tomato.png");
+        tomatoIcon.attr("style", "width:100px");
+        var imdbDiv = $("<td>");
+        var imdbIcon = $("<img>");
+        imdbIcon.attr("src", "css/imdb.png");
+        imdbIcon.attr("style", "width:100px");
+        var metaDiv = $("<td>");
+        var metaCIcon = $("<img>");
+        metaCIcon.attr("src", "css/meta.png");
+        metaCIcon.attr("style", "width:100px");
+
+        ratingsDiv.html("<td>" + response.Ratings[1].Value + "</td><td>" + response.Ratings[0].Value + "</td><td>" + response.Ratings[2].Value + "</td>");
+        tomatoDiv.append(tomatoIcon);
+        imdbDiv.append(imdbIcon);
+        metaDiv.append(metaCIcon);
+        $("#icons").prepend(tomatoDiv, imdbDiv, metaDiv);
+      });
+  }omdb(filmSearch);
+  function generateRandomNews() {
+    var HongAPIkey = "d6b8b08a14b6f4279a4ddf7eb7c50f4c";
+    var search = capitalize_Words(filmSearch);
+    var changeArticleCount = 0;
+    // Their AJAX method is a little different from what we've learnt
+    fetch('https://gnews.io/api/v3/search?q=' + search + '&token=' + HongAPIkey + '&in=title')
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data);
+        var URLlink = $("#news-title-link");
+        var randomIndex = Math.floor(Math.random() * data.articles.length);
+        var randomArticle = data.articles[randomIndex];
+        var articleTitle = randomArticle.title;
+        // Just for testing
+        console.log(articleTitle);
+        console.log(typeof (articleTitle));
+        console.log(typeof (data.articles.length))
+        console.log(randomIndex);
+        console.log(randomArticle.url);
+        // To avoid unrelated articles with the same words (string must be in that sequence)
+        if (articleTitle.includes(search)) {
+          console.log(true);
+          // Adding attributes and text to the body
+          URLlink.attr({
+            "href": randomArticle.url,
+            "target": "_blank"
+          });
+          URLlink.text(randomArticle.title);
+          $("#news-description").text(randomArticle.description);
+          $("#published-date").text(randomArticle.publishedAt);
+        } else {
+          changeArticleCount += 1;
+          console.log(false);
+          generateRandomNews();
+        }
+      });
+    console.log(changeArticleCount)
   }
-});
-
-//End GIPHY Ajax search
-
-//omdb api
-function omdb(title) {
-  //building url to query database
-  omdbURL = "https://www.omdbapi.com/?t=" + title + "&y=&plot=short&apikey=trilogy";
-
-  //run AJAX call to the omdb API
-  $.ajax({
-    url: omdbURL,
-    method: "GET"
+  generateRandomNews();
   })
-    // We store all of the retrieved data inside of an object called "response"
-    .then(function (response) {
 
-      // Log the queryURL
-      console.log(omdbURL);
+  loadPage();
 
-      // Log the resulting object
-      console.log(response);
-      //title
-
-      $("#title").text(response.Title);
-
-      //running time
-      $("#time").html("<b>Running time:</b> " + response.Runtime);
-      //Plot
-      $("#plot").text("Plot");
-      $("#plot").html("<p>" + response.Plot + "</p>");
-      //director and cast
-      $("#directorANDcast").html("<p><b>Director:</b> " + response.Director + "<br><b>Starring:</b> " + response.Actors + "</p>");
-      //poster
-      $("#poster").attr("src", response.Poster);
-      //ratings
-      var ratingsDiv = $("#ratings");
-      var tomatoDiv = $("<td>");
-      var tomatoIcon = $("<img>");
-      tomatoIcon.attr("src", "css/tomato.png");
-      tomatoIcon.attr("style", "width:100px");
-      var imdbDiv = $("<td>");
-      var imdbIcon = $("<img>");
-      imdbIcon.attr("src", "css/imdb.png");
-      imdbIcon.attr("style", "width:100px");
-      var metaDiv = $("<td>");
-      var metaCIcon = $("<img>");
-      metaCIcon.attr("src", "css/meta.png");
-      metaCIcon.attr("style", "width:100px");
-
-      ratingsDiv.html("<td>" + response.Ratings[1].Value + "</td><td>" + response.Ratings[0].Value + "</td><td>" + response.Ratings[2].Value + "</td>");
-      tomatoDiv.append(tomatoIcon);
-      imdbDiv.append(imdbIcon);
-      metaDiv.append(metaCIcon);
-      $("#icons").prepend(tomatoDiv, imdbDiv, metaDiv);
-
-    });
+function loadPage() {
+    var storedList = JSON.parse(localStorage.getItem("Searches"));
+    if (storedList !== null) {
+        savedSearch = storedList
+        for (var i = 0; i < savedSearch.length; i++) {
+            var listItem = $("<li>");
+            listItem.text(savedSearch[i]);
+            $(".searches").prepend(listItem);
+        }
+    }
 }
-omdb(filmSearch);
