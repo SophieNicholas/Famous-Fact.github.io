@@ -3,27 +3,30 @@
 
 <head>
 
-  <!-- Basic Page Needs
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <!-- Basic Page Needs -->
   <meta charset="utf-8">
-  <title>Best Site Ever</title>
+
+               <title>Famous-Facts</title>
+
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <!-- Mobile Specific Metas
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <!-- Mobile Specific Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- FONT
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <!-- FONT including google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Shrikhand" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
 
-  <!-- CSS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <!-- CSS: skeleton, normalize and css -->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
-  <style>
+
+  <link rel="stylesheet" href="css/style.css">
+
+ <style>
     .columns {
       margin-left: 1%;
     }
@@ -60,22 +63,53 @@
       text-align: center;
     }
   </style>
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+</head>
 
+<!-- This is the html for the very first page  -->
 
 <body>
+  <div id="title" class="container one">
 
-  <!-- Primary Page Layout
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <div class="container">
     <div class="row">
-      <div class="two columns">
-
+      <div class="twelve columns">
+        <p id="website"> Welcome to Actors Addicts </p>
       </div>
-      <div class="six columns">
-        <h2 id="title"></h2>
-        <p id="time"></p>
-        <h3>Plot</h3>
-        <p id="plot"></p>
+    </div>
+
+    <div class="row">
+      <div class="twelve columns">
+        <form>
+          <input id="searchTerm" placeholder="Search your celebrity">
+          <input id="searchButton" type="submit">
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- The output page after pressing the search button  -->
+  <div class="container two">
+    <p id="second-welcome"> Welcome to Actors Addicts </p>
+    <form>
+      <!-- the second search bar, this is only for show it will not be needed in the final as we will only append the class so swe dont loose the functions of the search bar  -->
+      <input class="updated-search-bar" placeholder="Search your celebrity">
+      <input id="searchButton" type="submit">
+    </form>
+    <div class="row">
+      <div class="twelve columns">
+        <h2 class="title"></h2>
+          <h5>Plot</h5>
+        <i id="plot"></i>
+      </div>
+    </div>
+
+    <!-- picture of actor and ifnormatin on them -->
+    <div class="row" id="pic-info">
+      <div id="img-place" class="two columns">
+        <img id="poster">
+      </div>
+      <div id="info-area" class="seven columns">
         <p id="directorANDcast"></p>
         <table>
           <tr id="icons">
@@ -86,27 +120,32 @@
           </tr>
         </table>
       </div>
-      <div class="two columns">
-        <img id="poster">
-      </div>
     </div>
-    <div class="row">
+
+    <!-- Gifs layout -->
+    <div class="row" id="gifs">
       <div class="three columns gif1 fourgifs"></div>
       <div class="three columns gif2 fourgifs"></div>
       <div class="three columns gif3 fourgifs"></div>
       <div class="three columns gif4 fourgifs"></div>
+   
+
     </div>
     <div class="row">
+
       <div class="four columns gif5 threegifs"></div>
       <div class="four columns gif6 threegifs"></div>
       <div class="four columns gif7 threegifs"></div>
     </div>
   </div>
+  </div>
+
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="script.js"></script>
-  <!-- End Document
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+
+
 </body>
 
 </html>
