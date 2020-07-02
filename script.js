@@ -1,9 +1,9 @@
 //TEST VARIABLE FOR SEARCH (change movie name here)
-var filmSearch = "harry potter"
+var filmSearch = ""
 //Global Variables for GIPHY
 var gifLimit = 700
 var gifShuffleNumber = 0;
-var gifClasses = [".gif1", ".gif2", ".gif3", ".gif4"];
+var gifClasses = [".gif1", ".gif2", ".gif3"];
 var savedSearch = [];
 
 function capitalize_Words(str) {
@@ -33,15 +33,18 @@ function shuffle(array) {
 //end of function
 
 //GIPHY Ajax search
-$("#searchButton").on("click", function () {
+$(".searchButton").on("click", function () {
   event.preventDefault();
+  if($("#searchTerm").val()==""){
+    return;
+  };
 
-  $('html, body').animate({
-    scrollTop: $( $(this).attr('href') ).offset().top
+$('html, body').animate({
+    scrollTop: $($(this).attr('href')).offset().top
 
     // Adjustable scroll speed here
   }, 800);
-
+ 
   filmSearch = $("#searchTerm").val();
   savedSearch.push(filmSearch);
   localStorage.setItem("Searches", JSON.stringify(savedSearch));
@@ -79,52 +82,20 @@ function mainSearch() {
         if (gifresults[gifShuffleNumber[i]].title.indexOf("film") >= 0 | gifresults[gifShuffleNumber[i]].slug.indexOf("film") >= 0 | gifresults[gifShuffleNumber[i]].title.indexOf("movie") >= 0 | gifresults[gifShuffleNumber[i]].slug.indexOf("movie") >= 0) {
           console.log(gifresults[1].rating)
           // looks for gifs that are 200px in height and less then 351px in width
-          if (gifresults[gifShuffleNumber[i]].images.fixed_height.width < 281) {
-            var gifDiv = $("<div>").css("float", "none");
+          if (gifresults[gifShuffleNumber[i]].images.fixed_height.width < 361) {
+            var gifDiv = $("<div>").css("float","None");
             var gifOutput = $("<img>");
             gifOutput.attr({ "src": gifresults[gifShuffleNumber[i]].images.fixed_height.url, "alt": gifresults[gifShuffleNumber[i]].title });
             gifDiv.append(gifOutput);
             var gifNumber = gifClasses[i2];
             $(gifNumber).append(gifDiv);
             i2++;
-            if (i2 == 4) {
+            if (i2 == 3) {
               i = gifLimit;
-              i3 = 1
             }
           }
           console.log(i2)
           console.log(i)
-        }
-      }
-    }
-    //if function can't find 4 pics it searches for 3 larger ones
-    if (i3 == 0) {
-      $(".gif1").empty();
-      $(".gif2").empty();
-      $(".gif3").empty();
-      var i2 = 0
-      for (var i = 0; i < gifresults.length; i++) {
-        // looks for all gifs that are not rated r
-        if (gifresults[gifShuffleNumber[i]].rating !== "r") {
-          if (gifresults[gifShuffleNumber[i]].title.indexOf("film") >= 0 | gifresults[gifShuffleNumber[i]].slug.indexOf("film") >= 0 | gifresults[gifShuffleNumber[i]].title.indexOf("movie") >= 0 | gifresults[gifShuffleNumber[i]].slug.indexOf("movie") >= 0) {
-            console.log(gifresults[1].rating)
-            // looks for gifs that are 200px in height and less then 351px in width
-            if (gifresults[gifShuffleNumber[i]].images.fixed_height.width < 371) {
-              var gifDiv = $("<div>").css("float", "none");
-              var gifOutput = $("<img>");
-              gifOutput.attr({ "src": gifresults[gifShuffleNumber[i]].images.fixed_height.url, "alt": gifresults[gifShuffleNumber[i]].title });
-              gifDiv.append(gifOutput);
-              var gifNumber = gifClasses2[i2];
-              $(gifNumber).append(gifDiv);
-              i2++
-              if (i2 == 3) {
-                i = gifLimit;
-                i3 = 2
-              }
-            }
-            console.log(i2)
-            console.log(i)
-          }
         }
       }
     }
@@ -239,12 +210,12 @@ function loadPage() {
     savedSearch = storedList
     if (savedSearch.length > 5) {
       var savedSearch2 = []
-      for (var i = 1; i < savedSearch.length; i++){
+      for (var i = 1; i < savedSearch.length; i++) {
         savedSearch2.push(savedSearch[i]);
+      }
+      savedSearch = savedSearch2;
+      console.log(savedSearch)
     }
-    savedSearch = savedSearch2;
-    console.log(savedSearch)
-  }
     for (var i = 0; i < savedSearch.length; i++) {
       var listItem = $("<li>").attr("class", "listed").css("color", "white");
       listItem.text(savedSearch[i]);

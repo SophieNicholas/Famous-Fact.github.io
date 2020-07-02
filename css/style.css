@@ -86,9 +86,9 @@
     }
     
     #img-place {
-        margin:0px;
+    margin:0px;
     background-color: maroon;
-    height: 300px;
+    height: auto;
     width: 300px;
     text-align: center;
     }
@@ -140,4 +140,40 @@
     .listed:hover {
         cursor: pointer;
         text-decoration: underline;
+      }
+
+      .columns {
+        margin-left: 1%;
+      }
+  
+      .container {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        box-sizing: border-box;
+      }
+  
+      .threegifs {
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-top: 10px;
+      }
+  
+      .fourgifs.columns {
+        width: 24%;
+      }
+  
+      .fourgifs {
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-top: 10px;
+      }
+  
+      .threegifs.columns {
+        width: 32%;
+        text-align: center;
       }

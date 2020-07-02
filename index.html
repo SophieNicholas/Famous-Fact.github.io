@@ -27,41 +27,7 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    .columns {
-      margin-left: 1%;
-    }
 
-    .container {
-      position: relative;
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      box-sizing: border-box;
-    }
-
-    .threegifs {
-      text-align: center;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      margin-top: 10px;
-    }
-
-    .fourgifs.columns {
-      width: 24%;
-    }
-
-    .fourgifs {
-      text-align: center;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      margin-top: 10px;
-    }
-
-    .threegifs.columns {
-      width: 32%;
-      text-align: center;
-    }
   </style>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
 </head>
@@ -81,7 +47,7 @@
       <div class="twelve columns">
         <form>
           <input id="searchTerm" placeholder="Search your movie title">
-          <a id="searchButton" type="submit" href="#second-page">SUBMIT</a>
+          <a class="searchButton" type="submit" href="#second-page">SUBMIT</a>
         </form>
       </div>
     </div>
@@ -96,12 +62,12 @@
 
   <!-- The output page after pressing the search button  -->
 
-  <div class="container two">
+  <div class="container two" id="second-page">
     <p id="second-welcome"> Welcome to Actor Addict </p>
     <form>
       <!-- the second search bar, this is only for show it will not be needed in the final as we will only append the class so swe dont loose the functions of the search bar  -->
       <input class="updated-search-bar" placeholder="Search your movie title">
-      <a id="searchButton" type="submit">SUBMIT</a>
+      <a class="searchButton" type="submit">SUBMIT</a>
     </form>
     <div class="row">
       <div class="twelve columns">
@@ -137,19 +103,11 @@
     </div>
 
     <!-- Gifs layout -->
-    <div class="row" id="gifs">
-      <div class="three columns gif1 fourgifs"></div>
-      <div class="three columns gif2 fourgifs"></div>
-      <div class="three columns gif3 fourgifs"></div>
-      <div class="three columns gif4 fourgifs"></div>
-
-
-    </div>
     <div class="row">
 
-      <div class="four columns gif5 threegifs searches"></div>
-      <div class="four columns gif6 threegifs"></div>
-      <div class="four columns gif7 threegifs"></div>
+      <div class="four columns gif1 threegifs"></div>
+      <div class="four columns gif2 threegifs"></div>
+      <div class="four columns gif3 threegifs"></div>
     </div>
   </div>
   </div>
