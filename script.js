@@ -4,11 +4,10 @@ var filmSearch = "harry potter"
 var gifLimit = 700
 var gifShuffleNumber = 0;
 var gifClasses = [".gif1", ".gif2", ".gif3", ".gif4"];
-var savedSearch= [];
+var savedSearch = [];
 
-function capitalize_Words(str)
-{
- return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+function capitalize_Words(str) {
+  return str.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
 }
 console.log(capitalize_Words('js string exercises'));
 
@@ -45,10 +44,12 @@ $("#searchButton").on("click", function () {
 
   filmSearch = $("#searchTerm").val();
   savedSearch.push(filmSearch);
-  var listItem = $("<li>");
-  listItem.text(filmSearch);
-  $(".searches").prepend(filmSearch);
   localStorage.setItem("Searches", JSON.stringify(savedSearch));
+  loadPage()
+  mainSearch();
+})
+
+function mainSearch() {
   var gifQueryURL = "https://api.giphy.com/v1/gifs/search?q=" + filmSearch + "&api_key=jPos9RSs2YFAD8HQVQCBt782M5HUNlT6&limit=" + gifLimit;
   console.log("hello");
   $.ajax({
@@ -129,6 +130,7 @@ $("#searchButton").on("click", function () {
     }
   });
 
+
   //End GIPHY Ajax search
 
   //omdb api
@@ -183,7 +185,7 @@ $("#searchButton").on("click", function () {
         metaDiv.append(metaCIcon);
         $("#icons").prepend(tomatoDiv, imdbDiv, metaDiv);
       });
-  }omdb(filmSearch);
+  } omdb(filmSearch);
   function generateRandomNews() {
     var HongAPIkey = "d6b8b08a14b6f4279a4ddf7eb7c50f4c";
     var search = capitalize_Words(filmSearch);
@@ -225,18 +227,35 @@ $("#searchButton").on("click", function () {
     console.log(changeArticleCount)
   }
   generateRandomNews();
-  })
+}
 
-  loadPage();
+
+loadPage();
 
 function loadPage() {
-    var storedList = JSON.parse(localStorage.getItem("Searches"));
-    if (storedList !== null) {
-        savedSearch = storedList
-        for (var i = 0; i < savedSearch.length; i++) {
-            var listItem = $("<li>");
-            listItem.text(savedSearch[i]);
-            $(".searches").prepend(listItem);
-        }
+  $(".lastFive").empty();
+  var storedList = JSON.parse(localStorage.getItem("Searches"));
+  if (storedList !== null) {
+    savedSearch = storedList
+    if (savedSearch.length > 5) {
+      var savedSearch2 = []
+      for (var i = 1; i < savedSearch.length; i++){
+        savedSearch2.push(savedSearch[i]);
     }
+    savedSearch = savedSearch2;
+    console.log(savedSearch)
+  }
+    for (var i = 0; i < savedSearch.length; i++) {
+      var listItem = $("<li>").attr("class", "listed").css("color", "white");
+      listItem.text(savedSearch[i]);
+      $(".lastFive").prepend(listItem);
+    }
+  }
 }
+
+$(".lastFive").on("click", function (event) {
+  //event.preventDefault();
+  filmSearch = event.target.textContent;
+  console.log(filmSearch);
+  mainSearch();
+})
