@@ -36,6 +36,13 @@ function shuffle(array) {
 //GIPHY Ajax search
 $("#searchButton").on("click", function () {
   event.preventDefault();
+
+  $('html, body').animate({
+    scrollTop: $( $(this).attr('href') ).offset().top
+
+    // Adjustable scroll speed here
+  }, 800);
+
   filmSearch = $("#searchTerm").val();
   savedSearch.push(filmSearch);
   var listItem = $("<li>");
