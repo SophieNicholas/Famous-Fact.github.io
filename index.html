@@ -6,7 +6,7 @@
   <!-- Basic Page Needs -->
   <meta charset="utf-8">
 
-               <title>Famous-Facts</title>
+  <title>Famous-Facts</title>
 
   <meta name="description" content="">
   <meta name="author" content="">
@@ -26,7 +26,7 @@
 
   <link rel="stylesheet" href="css/style.css">
 
- <style>
+  <style>
     .columns {
       margin-left: 1%;
     }
@@ -63,7 +63,7 @@
       text-align: center;
     }
   </style>
-   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
 </head>
 
 <!-- This is the html for the very first page  -->
@@ -81,25 +81,39 @@
       <div class="twelve columns">
         <form>
           <input id="searchTerm" placeholder="Search your movie title">
-          <input id="searchButton" type="submit">
+          <a id="searchButton" type="submit" href="#second-page">SUBMIT</a>
         </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">
+        <div class="lastFive">
+        </div>
       </div>
     </div>
   </div>
 
 
   <!-- The output page after pressing the search button  -->
+
   <div class="container two">
     <p id="second-welcome"> Welcome to Actor Addict </p>
     <form>
       <!-- the second search bar, this is only for show it will not be needed in the final as we will only append the class so swe dont loose the functions of the search bar  -->
       <input class="updated-search-bar" placeholder="Search your movie title">
-      <input id="searchButton" type="submit">
+      <a id="searchButton" type="submit">SUBMIT</a>
     </form>
     <div class="row">
       <div class="twelve columns">
+        <div id="random-news">
+          <h2>Random News About the Movie!</h2>
+          <!-- Add link to the news title -->
+          <h4 id="news-title"><a id="news-title-link"></a></h4>
+          <p id="news-description"></p>
+          <p id="published-date"></p>
+        </div>
         <h2 class="title"></h2>
-          <h5>Plot</h5>
+        <h5>Plot</h5>
         <i id="plot"></i>
       </div>
     </div>
@@ -128,12 +142,12 @@
       <div class="three columns gif2 fourgifs"></div>
       <div class="three columns gif3 fourgifs"></div>
       <div class="three columns gif4 fourgifs"></div>
-   
+
 
     </div>
     <div class="row">
 
-      <div class="four columns gif5 threegifs"></div>
+      <div class="four columns gif5 threegifs searches"></div>
       <div class="four columns gif6 threegifs"></div>
       <div class="four columns gif7 threegifs"></div>
     </div>
