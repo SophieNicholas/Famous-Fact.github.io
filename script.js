@@ -140,11 +140,11 @@ function mainSearch() {
         var tomatoDiv = $("<td>");
         var tomatoIcon = $("<img>");
         tomatoIcon.attr("src", "css/tomato.png");
-        tomatoIcon.attr("style", "width:100px");
+        tomatoIcon.attr("style", "width:100px; height:100px");
         var imdbDiv = $("<td>");
         var imdbIcon = $("<img>");
         imdbIcon.attr("src", "css/imdb.png");
-        imdbIcon.attr("style", "width:100px");
+        imdbIcon.attr("style", "width:100px; height:100px");
         var metaDiv = $("<td>");
         var metaCIcon = $("<img>");
         metaCIcon.attr("src", "css/meta.png");
@@ -217,7 +217,10 @@ function loadPage() {
       console.log(savedSearch)
     }
     for (var i = 0; i < savedSearch.length; i++) {
-      var listItem = $("<li>").attr("class", "listed").css("color", "white");
+      var listItem = $("<li>").attr({
+        "class": "listed",
+        "href": "#second-page"
+      }).css("color", "white");
       listItem.text(savedSearch[i]);
       $(".lastFive").prepend(listItem);
     }
@@ -231,3 +234,15 @@ $(".lastFive").on("click", function (event) {
   console.log(filmSearch);
   mainSearch();
 });
+
+
+// Run this when DOM has been loaded
+$(document).ready(function () {
+  $(".listed").on("click", function () {
+    $('html, body').animate({
+      scrollTop: $($(this).attr('href')).offset().top
+  
+      // Adjustable scroll speed here
+    }, 800);
+  })
+})
