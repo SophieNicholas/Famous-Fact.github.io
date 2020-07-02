@@ -253,9 +253,10 @@ function loadPage() {
   }
 }
 
+
 $(".lastFive").on("click", function (event) {
   //event.preventDefault();
   filmSearch = event.target.textContent;
   console.log(filmSearch);
   mainSearch();
-})
+});
