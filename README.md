@@ -1,8 +1,12 @@
 # Actor Addict
 
-IMAGE HERE
-[Actor Addict Website](https://sophienicholas.github.io/Famous-Fact.github.io/)
-[Actor Addict Repository](https://github.com/SophieNicholas/Famous-Fact.github.io)
+
+<img src="css/completeSearchImage.png" width="500"  alt="Search Field"/>
+<img src="css/output.png" width="500"  alt="Output Field" />
+
+
+* [Actor Addict Website](https://sophienicholas.github.io/Famous-Fact.github.io/)
+* [Actor Addict Repository](https://github.com/SophieNicholas/Famous-Fact.github.io)
 
  Actor Addict, allows you to search for a movie and displays the top news relating to the movie, the plot, director and actors, the films poster and ratings as well as gifs related to the film. As actor addicts we waste crucial time swapping between websites to find all the details on a film we are interested in. Now it is all in one place! What are you all going to do now with that extra spare time?
 
