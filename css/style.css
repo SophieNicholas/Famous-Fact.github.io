@@ -177,3 +177,15 @@
         width: 32%;
         text-align: center;
     }
+
+    .searchButton {
+        cursor: pointer;
+    }
+
+    #news-title-link {
+        color: darkblue ;
+    }
+
+    .delete {
+        display:none;
+    }

@@ -5,6 +5,7 @@ var gifLimit = 700
 var gifShuffleNumber = 0;
 var gifClasses = [".gif1", ".gif2", ".gif3"];
 var savedSearch = [];
+var scrollButton = 0;
 
 function capitalize_Words(str) {
   return str.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
@@ -39,13 +40,12 @@ $(".searchButton").on("click", function () {
     return;
   };
 
-$('html, body').animate({
-    scrollTop: $($(this).attr('href')).offset().top
-
-    // Adjustable scroll speed here
-  }, 800);
- 
-  filmSearch = $("#searchTerm").val();
+  if($("#search-term2").val()==""){
+    filmSearch = $("#searchTerm").val();
+  }
+  else{
+    filmSearch = $("#search-term2").val();
+  }
   savedSearch.push(filmSearch);
   localStorage.setItem("Searches", JSON.stringify(savedSearch));
   loadPage()
@@ -53,6 +53,16 @@ $('html, body').animate({
 })
 
 function mainSearch() {
+  $("#delete").removeClass("delete");
+  $(".threegifs").empty();
+  if (scrollButton==0){
+  $('html, body').animate({
+    scrollTop: $($("a.searchButton").attr('href')).offset().top
+
+    // Adjustable scroll speed here
+  }, 800);
+}
+  scrollButton++
   var gifQueryURL = "https://api.giphy.com/v1/gifs/search?q=" + filmSearch + "&api_key=jPos9RSs2YFAD8HQVQCBt782M5HUNlT6&limit=" + gifLimit;
   console.log("hello");
   $.ajax({
