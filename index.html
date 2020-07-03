@@ -59,55 +59,56 @@
 
   <!-- The output page after pressing the search button  -->
 
-  <div class="container two" id="second-page">
-    <p id="second-welcome"> Welcome to Actor Addict </p>
-    <form>
-      <!-- the second search bar, this is only for show it will not be needed in the final as we will only append the class so swe dont loose the functions of the search bar  -->
-      <input class="updated-search-bar" placeholder="Search your movie title">
-      <a class="searchButton" type="submit">SUBMIT</a>
-    </form>
-    <div class="row">
-      <div class="twelve columns">
-        <div id="random-news">
-          <h2>Random News About the Movie!</h2>
-          <h4 id="news-title"><a id="news-title-link"></a></h4>
-          <p id="news-description"></p>
-          <p id="published-date"></p>
+  <div class="delete" id="delete">
+    <div class="container two" id="second-page">
+      <p id="second-welcome"> Welcome to Actor Addict </p>
+      <form>
+        <!-- the second search bar, this is only for show it will not be needed in the final as we will only append the class so swe dont loose the functions of the search bar  -->
+        <input class="updated-search-bar" id="search-term2" placeholder="Search your movie title">
+        <a class="searchButton" type="submit">SUBMIT</a>
+      </form>
+      <div class="row">
+        <div class="twelve columns">
+          <div id="random-news">
+            <h2>Random News About the Movie!</h2>
+            <h4 id="news-title"><a id="news-title-link"></a></h4>
+            <p id="news-description"></p>
+            <p id="published-date"></p>
+          </div>
+          <h2 class="title"></h2>
+          <h5>Plot</h5>
+          <i id="plot"></i>
         </div>
-        <h2 class="title"></h2>
-        <h5>Plot</h5>
-        <i id="plot"></i>
       </div>
-    </div>
 
-    <!-- picture of actor and information on them -->
-    <div class="row" id="pic-info">
-      <div id="img-place" class="two columns">
-        <img id="poster">
+      <!-- picture of actor and information on them -->
+      <div class="row" id="pic-info">
+        <div id="img-place" class="two columns">
+          <img id="poster">
+        </div>
+        <div id="info-area" class="seven columns">
+          <p id="directorANDcast"></p>
+          <table>
+            <tr id="icons">
+
+            </tr>
+            <tr id="ratings">
+
+            </tr>
+          </table>
+        </div>
       </div>
-      <div id="info-area" class="seven columns">
-        <p id="directorANDcast"></p>
-        <table>
-          <tr id="icons">
 
-          </tr>
-          <tr id="ratings">
+      <!-- Gifs layout -->
+      <div class="row">
 
-          </tr>
-        </table>
+        <div class="four columns gif1 threegifs"></div>
+        <div class="four columns gif2 threegifs"></div>
+        <div class="four columns gif3 threegifs"></div>
       </div>
-    </div>
-
-    <!-- Gifs layout -->
-    <div class="row">
-
-      <div class="four columns gif1 threegifs"></div>
-      <div class="four columns gif2 threegifs"></div>
-      <div class="four columns gif3 threegifs"></div>
     </div>
   </div>
   </div>
-
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="script.js"></script>
