@@ -169,7 +169,7 @@ function mainSearch() {
       });
   } omdb(filmSearch);
   function generateRandomNews() {
-    var HongAPIkey = "d6b8b08a14b6f4279a4ddf7eb7c50f4c";
+    var HongAPIkey = "a103baadfbf14436c6d8c14e58a09384";
     var search = capitalize_Words(filmSearch);
     var changeArticleCount = 0;
     // Their AJAX method is a little different from what we've learnt
