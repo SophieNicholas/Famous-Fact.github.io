@@ -55,6 +55,7 @@ $(".searchButton").on("click", function () {
 function mainSearch() {
   $("#delete").removeClass("delete");
   $(".threegifs").empty();
+  $("#icons").empty();
   if (scrollButton==0){
   $('html, body').animate({
     scrollTop: $($("a.searchButton").attr('href')).offset().top
